@@ -1,30 +1,26 @@
 import React, { Component } from "react";
-import { View, Text, Button, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { Toolbar, Button } from 'react-native-material-ui';
 
 export default class App extends Component {
-  state = {
-    counter: 0
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      counter: 0
+    };
+
+    this.onButtonClicked = this.onButtonClicked.bind(this);
+  }
 
   styles = StyleSheet.create({
-    view: {
-      width: "100%",
-      height: "100%",
+    pageView: {
+      height: '100%'
+    },
+    bodyView: {
+      flex: 1,
       justifyContent: "center",
       alignItems: "center"
-    },
-    button: {
-      backgroundColor: '#2196f3',
-      padding: 10,
-      paddingLeft: 30,
-      paddingRight: 30,
-      borderRadius: 5,
-      // To make a button raised
-      shadowColor: 'rgba(0,0,0, .4)', // IOS
-      shadowOffset: { height: 1, width: 1 }, // IOS
-      shadowOpacity: 1, // IOS
-      shadowRadius: 1, //IOS
-      elevation: 2, // Android
     }
   });
 
@@ -36,12 +32,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={this.styles.view}>
-        <Text>Button clicked {this.state.counter} time(s).</Text>
-        {/* <Button title="ADD" onPress={this.onButtonClicked.bind(this)} /> */}
-        <TouchableOpacity style={this.styles.button} onPress={this.onButtonClicked.bind(this)}>
-          <Text style={{color: 'white'}}>ADD</Text>
-        </TouchableOpacity>
+      <View style={this.styles.pageView}>
+        <Toolbar
+          centerElement="Clicker"
+        />
+        <View style={this.styles.bodyView}>
+          <Text>Button clicked {this.state.counter} time(s).</Text>
+          <Button raised primary text="ADD" onPress={this.onButtonClicked} />
+        </View>
       </View>
     );
   }
