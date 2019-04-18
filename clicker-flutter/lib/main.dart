@@ -7,12 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Clicker',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Clicker'),
-        ),
-        body: Clicker(),
-      ),
+      home: Clicker(),
     );
   }
 }
@@ -34,19 +29,24 @@ class _ClickerState extends State<Clicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text('Button clicked $counter time(s).'),
-          RaisedButton(
-            color: Theme.of(context).primaryColor,
-            textColor: Theme.of(context).primaryTextTheme.button.color,
-            child: Text('ADD'),
-            onPressed: onButtonClicked,
-          )
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Clicker'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Button clicked $counter time(s).'),
+            RaisedButton(
+              color: Theme.of(context).primaryColor,
+              textColor: Theme.of(context).primaryTextTheme.button.color,
+              child: Text('ADD'),
+              onPressed: onButtonClicked,
+            ),
+          ],
+        ),
       ),
     );
   }
