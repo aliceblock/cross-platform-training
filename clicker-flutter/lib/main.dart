@@ -20,6 +20,13 @@ class Clicker extends StatefulWidget {
 class _ClickerState extends State<Clicker> {
   int counter = 0;
 
+  onMinusClicked() {
+    setState(() {
+      print('Minus clicked');
+      counter -= 1;
+    });
+  }
+
   onButtonClicked() {
     setState(() {
       print('Button clicked');
@@ -39,12 +46,24 @@ class _ClickerState extends State<Clicker> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('Button clicked $counter time(s).'),
-            RaisedButton(
-              color: Theme.of(context).primaryColor,
-              textColor: Theme.of(context).primaryTextTheme.button.color,
-              child: Text('ADD'),
-              onPressed: onButtonClicked,
-            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                RaisedButton(
+                  color: Colors.red,
+                  textColor: Theme.of(context).primaryTextTheme.button.color,
+                  child: Text('MINUS'),
+                  onPressed: onMinusClicked,
+                ),
+                RaisedButton(
+                  color: Theme.of(context).primaryColor,
+                  textColor: Theme.of(context).primaryTextTheme.button.color,
+                  child: Text('ADD'),
+                  onPressed: onButtonClicked,
+                ),
+              ],
+            )
           ],
         ),
       ),
